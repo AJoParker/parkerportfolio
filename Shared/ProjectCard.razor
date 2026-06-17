@@ -1,0 +1,26 @@
+@using ParkerPortfolio.Models
+
+<a href="@($"/projects/{Project.Slug}")" 
+   class="card"
+   style="--accent: @Project.AccentHex; --accent-2: @Project.AccentSecondaryHex;">
+    <div class="card-header">
+        <h3 class="card-name">@Project.Name</h3>
+        <span class="archetype">@Project.Archetype</span>
+    </div>
+    <p class="tagline">@Project.Tagline</p>
+    <p class="description">@Project.Description</p>
+    <div class="stack">
+        @foreach (var tech in Project.Stack)
+        {
+            <span class="chip">@tech</span>
+        }
+    </div>
+    <div class="cta">
+        <span>View project</span>
+        <span class="arrow">&rarr;</span>
+    </div>
+</a>
+
+@code {
+    [Parameter, EditorRequired] public Project Project { get; set; } = default!;
+}

@@ -1,0 +1,50 @@
+﻿@page "/"
+@using ParkerPortfolio.Data
+@using Microsoft.FluentUI.AspNetCore.Components
+
+<PageTitle>Aaron Joel Parker · Software Engineer</PageTitle>
+
+<section class="hero">
+    <p class="eyebrow">Software engineer, Rochester, NY</p>
+    <h1 class="hero-name">Aaron Joel Parker</h1>
+    <p class="hero-pitch">
+        I build production .NET systems with strong backend, real-time, and Azure foundations.
+        Six-plus years shipping accessibility software at RIT. Open to .NET and Azure engineering roles.
+    </p>
+    <div class="hero-actions">
+        <FluentButton Appearance="Appearance.Accent" 
+                      Href="https://github.com/AJoParker" 
+                      Target="_blank" rel="noopener">
+            View GitHub
+        </FluentButton>
+        <FluentButton Href="/resume.pdf" Target="_blank">
+            Resume
+        </FluentButton>
+    </div>
+</section>
+
+<section class="work">
+    <header class="section-header">
+        <h2>Selected work</h2>
+        <p>Four projects, each its own aesthetic and architecture.</p>
+    </header>
+    <div class="project-grid">
+        @foreach (var project in ProjectsCatalog.All)
+        {
+            <ProjectCard Project="@project" />
+        }
+    </div>
+</section>
+
+<section class="meta">
+    <div class="meta-block">
+        <p class="meta-label">Certifications</p>
+        <p>CKAD, CNCF</p>
+        <p class="muted">AI-200 in progress, AZ-400 next</p>
+    </div>
+    <div class="meta-block">
+        <p class="meta-label">Currently</p>
+        <p>Open to senior .NET and Azure engineering roles.</p>
+        <p class="muted">Rochester, NY. Remote, or relocating for the right offer.</p>
+    </div>
+</section>

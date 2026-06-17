@@ -1,0 +1,20 @@
+@inject NavigationManager Nav
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="/" class="brand">AP</a>
+        <nav class="nav">
+            <a href="/" class="@LinkClass("")">Work</a>
+            <a href="/about" class="@LinkClass("about")">About</a>
+            <a href="mailto:aaronparker714@outlook.com">Contact</a>
+        </nav>
+    </div>
+</header>
+
+@code {
+    private string LinkClass(string relative)
+    {
+        var uri = new Uri(Nav.Uri).AbsolutePath.Trim('/');
+        return uri == relative ? "active" : "";
+    }
+}
