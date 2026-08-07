@@ -1,0 +1,57 @@
+@page "/projects/lampyr"
+@layout ParkerPortfolio.Layouts.ProjectLayout
+
+<PageTitle>Lampyr · Aaron Joel Parker</PageTitle>
+
+<div class="canvas">
+    <a class="back" href="/">&larr; Portfolio</a>
+
+    <section class="hero">
+        <p class="eyebrow">
+            <span class="pulse"></span>
+            The @P.Archetype
+        </p>
+        <h1 class="title">@P.Name</h1>
+        <p class="tagline">@P.Tagline</p>
+        <p class="status">@P.Status</p>
+    </section>
+
+    <section class="prose">
+        <h2>The problem</h2>
+        <p>
+            A Deaf household still needs to know that the smoke alarm went off, that
+            the kettle is whistling, that the baby is crying. Existing solutions either
+            assault the whole house with audio or demand a control panel of fragile
+            attention. Neither respects the quiet.
+        </p>
+
+        <h2>The approach</h2>
+        <p>
+            Lampyr listens locally with a small on-device classifier, then translates
+            recognized sounds into a haptic pulse on the wrist and a soft glow on the
+            wall — one pulse, the size of the moment. The kitchen smoke alarm becomes
+            a wristband tap and a coral wash, and nothing else changes.
+        </p>
+
+        <h2>What it shows</h2>
+        <p>
+            ONNX Runtime at the edge, Azure IoT Hub for fleet plumbing, Azure Functions
+            for fan-out, MAUI for the wearable surface, and Blazor for the household
+            display. Clean Architecture keeps each layer honest.
+        </p>
+    </section>
+
+    <section class="stack">
+        <p class="stack-label">Stack</p>
+        <div class="chips">
+            @foreach (var tech in P.Stack)
+            {
+                <span class="chip">@tech</span>
+            }
+        </div>
+    </section>
+</div>
+
+@code {
+    private static readonly Project P = ProjectsCatalog.All.First(p => p.Slug == "lampyr");
+}

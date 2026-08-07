@@ -1,0 +1,62 @@
+@page "/projects/roomloom"
+@layout ParkerPortfolio.Layouts.ProjectLayout
+
+<PageTitle>RoomLoom · Aaron Joel Parker</PageTitle>
+
+<div class="canvas">
+    <a class="back" href="/">&larr; Portfolio</a>
+
+    <section class="hero">
+        <p class="eyebrow">The @P.Archetype</p>
+        <h1 class="title">@P.Name</h1>
+        <p class="tagline">@P.Tagline</p>
+        <p class="status">
+            @P.Status
+            @if (P.GitHubUrl is not null)
+            {
+                <span class="dot">·</span>
+                <a href="@P.GitHubUrl" target="_blank" rel="noopener">GitHub</a>
+            }
+        </p>
+    </section>
+
+    <section class="prose">
+        <h2>The problem</h2>
+        <p>
+            Real-time conferencing is rarely just a video call. There is a calendar on
+            one side and a media backend on the other, and most platforms hard-wire you
+            to a single choice for each. Swap a vendor and the center has to learn a
+            new dialect.
+        </p>
+
+        <h2>The approach</h2>
+        <p>
+            RoomLoom treats scheduling and media as ports the core owns. Calendars and
+            video systems plug in as adapters behind those contracts. The core never
+            knows which vendor it is talking to. Adding a new system means writing one
+            adapter, not editing the center — a single thread on a loom whose frame
+            stays still.
+        </p>
+
+        <h2>What it shows</h2>
+        <p>
+            A hexagonal architecture in production .NET, with SignalR carrying real-time
+            state, EF Core persisting it, MAUI shipping the same primitives to mobile,
+            and Azure + GitHub Actions doing the rest.
+        </p>
+    </section>
+
+    <section class="stack">
+        <p class="stack-label">Stack</p>
+        <div class="chips">
+            @foreach (var tech in P.Stack)
+            {
+                <span class="chip">@tech</span>
+            }
+        </div>
+    </section>
+</div>
+
+@code {
+    private static readonly Project P = ProjectsCatalog.All.First(p => p.Slug == "roomloom");
+}

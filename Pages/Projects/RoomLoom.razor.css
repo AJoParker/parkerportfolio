@@ -1,0 +1,156 @@
+.canvas {
+    --accent: #D8642E;
+    --accent-2: #F0B080;
+    --bg: #fdf8f3;
+    --text: #2a1d12;
+    --text-soft: #6e5644;
+    min-height: 100vh;
+    background:
+        repeating-linear-gradient(
+            115deg,
+            transparent 0,
+            transparent 18px,
+            rgba(216, 100, 46, 0.04) 18px,
+            rgba(216, 100, 46, 0.04) 19px
+        ),
+        var(--bg);
+    color: var(--text);
+    padding: 32px 24px 96px;
+    font-family: 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.back {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--text-soft);
+    text-decoration: none;
+    margin-bottom: 64px;
+    letter-spacing: 0.02em;
+    transition: color 200ms ease;
+}
+
+.back:hover {
+    color: var(--accent);
+}
+
+.hero {
+    max-width: 720px;
+    margin: 0 auto 72px;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 16px;
+    font-weight: 600;
+}
+
+.title {
+    font-size: 72px;
+    font-weight: 500;
+    margin: 0 0 20px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text);
+}
+
+.tagline {
+    font-size: 22px;
+    color: var(--text);
+    margin: 0 0 16px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.status {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin: 0;
+    letter-spacing: 0.04em;
+}
+
+.status a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-2);
+}
+
+.dot {
+    margin: 0 8px;
+    color: var(--accent-2);
+}
+
+.prose {
+    max-width: 720px;
+    margin: 0 auto 72px;
+}
+
+.prose h2 {
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 40px 0 12px;
+    font-weight: 600;
+}
+
+.prose h2:first-child {
+    margin-top: 0;
+}
+
+.prose p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0;
+}
+
+.stack {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.stack-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 0 0 14px;
+    font-weight: 600;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    font-size: 12px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--accent-2);
+    color: var(--text);
+    border-radius: 16px;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 640px) {
+    .canvas {
+        padding: 24px 18px 64px;
+    }
+    .title {
+        font-size: 48px;
+    }
+    .tagline {
+        font-size: 18px;
+    }
+    .prose p {
+        font-size: 16px;
+    }
+    .hero {
+        margin-bottom: 48px;
+    }
+}

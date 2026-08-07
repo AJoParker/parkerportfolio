@@ -1,0 +1,55 @@
+@page "/projects/between-bells"
+@layout ParkerPortfolio.Layouts.ProjectLayout
+
+<PageTitle>Between Bells · Aaron Joel Parker</PageTitle>
+
+<div class="canvas">
+    <a class="back" href="/">&larr; Portfolio</a>
+
+    <section class="hero">
+        <p class="eyebrow">The @P.Archetype</p>
+        <h1 class="title">@P.Name</h1>
+        <p class="tagline">@P.Tagline</p>
+        <p class="status">@P.Status</p>
+    </section>
+
+    <section class="prose">
+        <h2>The premise</h2>
+        <p>
+            A watchmaker, in love with the princess, slips out at curfew. Between one
+            bell and the next he must cross courtyards, scale a trellis, and reach her
+            balcony — past royal guards who do not know him and would not forgive him
+            if they did. He carries no blade. Drawing one ends the game.
+        </p>
+
+        <h2>The technology</h2>
+        <p>
+            Between Bells is a medieval HD-2D stealth game on a custom .NET 10 engine.
+            Silk.NET binds OpenGL 4.1; GLSL handles the parallax and bloom that give
+            the look its depth. ImGui drives the development overlays. The engine and
+            the game live in separate clean-architecture layers — moonlight on stone,
+            but well-organized underneath.
+        </p>
+
+        <h2>What it shows</h2>
+        <p>
+            That a senior .NET engineer can step outside ASP.NET Core and build
+            something that has to render at sixty frames per second without ever
+            forgetting why a clean seam between engine and game matters.
+        </p>
+    </section>
+
+    <section class="stack">
+        <p class="stack-label">Stack</p>
+        <div class="chips">
+            @foreach (var tech in P.Stack)
+            {
+                <span class="chip">@tech</span>
+            }
+        </div>
+    </section>
+</div>
+
+@code {
+    private static readonly Project P = ProjectsCatalog.All.First(p => p.Slug == "between-bells");
+}
