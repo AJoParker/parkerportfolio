@@ -10,7 +10,7 @@
 
 set -euo pipefail
 
-BASE_PATH="/parkerportfolio/"
+BASE_PATH="/portfolio/"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 STAGE="$ROOT/bin/pages-publish"
 OUT="$ROOT/docs"
