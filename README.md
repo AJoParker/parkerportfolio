@@ -19,11 +19,10 @@ Each project gets its own deep-dive page with an aesthetic tuned to the project 
 
 This site itself is built on:
 
-- .NET 9, C# 13
+- .NET 10, C# 14
 - Blazor WebAssembly
 - Microsoft.FluentUI.AspNetCore.Components
 - CSS isolation for per-page theming
-- GitHub Actions for CI/CD
 - GitHub Pages for static hosting
 
 ## Run locally
@@ -39,9 +38,19 @@ The site will be available at `http://localhost:5xxx`. Hot reload picks up Razor
 
 ## Deploy
 
-Pushes to `main` trigger the workflow in `.github/workflows/deploy.yml`. The workflow publishes the WebAssembly bundle, adds a `.nojekyll` flag and a `404.html` SPA fallback, and pushes the output to the `gh-pages` branch.
+Deployment is a script you run, and the published bundle is committed to the repo:
 
-The live site lives at [ajoparker.github.io](https://ajoparker.github.io).
+```bash
+./publish-pages.sh
+git add docs && git commit -m "publish site"
+git push
+```
+
+`publish-pages.sh` publishes the WebAssembly bundle into `docs/`, rewrites `<base href>` to the `/parkerportfolio/` project-page subpath, drops a `.nojekyll` flag so Jekyll doesn't strip `_framework/`, and copies `index.html` to `404.html` as the SPA fallback for deep links. `docs/` is generated — never hand-edit it.
+
+GitHub Pages is configured as **Deploy from a branch → `main` → `/docs`**. The live site lives at [ajoparker.github.io/parkerportfolio](https://ajoparker.github.io/parkerportfolio/).
+
+Because the site is served from a subpath, every internal link in the Razor source is **base-relative** (`href="projects/roomloom"`, not `href="/projects/roomloom"`). A leading slash bypasses the `<base>` tag and breaks in production while still appearing to work locally.
 
 ## Structure
 
@@ -52,6 +61,7 @@ Models/            the Project record
 Pages/             Home plus per-project deep-dives under Projects/
 Shared/            SiteHeader, SiteFooter, ProjectCard, and other reused components
 wwwroot/           static assets, global CSS, the host index.html
+docs/              generated. the published bundle GitHub Pages serves
 ```
 
 Per-page themes are scoped via Blazor's CSS isolation. Each `.razor` has a co-located `.razor.css`, and a project's deep-dive can override Fluent UI design tokens locally without affecting the rest of the site.

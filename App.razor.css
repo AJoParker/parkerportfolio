@@ -1,0 +1,28 @@
+.not-found {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.not-found h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0 0 0.75rem;
+}
+
+.not-found p {
+    margin: 0 0 2rem;
+    opacity: 0.65;
+}
+
+.not-found a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.not-found a:hover {
+    opacity: 1;
+}

@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
+    <!-- docs/ holds the published GitHub Pages bundle; never let it feed back into the build -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);docs/**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
